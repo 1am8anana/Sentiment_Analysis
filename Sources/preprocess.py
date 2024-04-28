@@ -86,3 +86,17 @@ BOWtcas_train = cvec_tcas.transform(Xtcas_train['text_tokens'])
 BOWtcas_test = cvec_tcas.transform(Xtcas_test['text_tokens'])
 BOWdf_train = cvec_df.transform(Xdf_train['text_tokens'])
 BOWdf_test = cvec_df.transform(Xdf_test['text_tokens'])
+
+def n1_process(sentence):
+    # Tokens
+    clean = process_sentence(sentence)
+    # BOW
+    BOW_sentence = cvec_tcas.transform(clean)
+    return BOW_sentence
+
+def n2_process(sentence):
+    # Tokens
+    clean = process_sentence(sentence)
+    # BOW
+    BOW_sentence = cvec_df.transform(clean)
+    return BOW_sentence
