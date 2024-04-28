@@ -90,13 +90,20 @@ BOWdf_test = cvec_df.transform(Xdf_test['text_tokens'])
 def n1_process(sentence):
     # Tokens
     clean = process_sentence(sentence)
+    if not isinstance(clean, str):
+        raise ValueError("Processed sentence is not a string.")
     # BOW
-    BOW_sentence = cvec_tcas.transform(clean)
+    BOW_sentence = cvec_tcas.transform([clean])
     return BOW_sentence
 
 def n2_process(sentence):
     # Tokens
     clean = process_sentence(sentence)
+    if not isinstance(clean, str):
+        raise ValueError("Processed sentence is not a string.")
+    
     # BOW
-    BOW_sentence = cvec_df.transform(clean)
+    BOW_sentence = cvec_df.transform([clean])  # Pass the processed sentence as a list
     return BOW_sentence
+
+print(n1_process("สวัสดีครับ"))
